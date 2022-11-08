@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+<form method="POST">
+  {% csrf_token %}
+  <div class="container">
+    <div class="row">
+        <h2 style="font-family: Perpetua; text-align:center;"><b>&emsp;Are you sure, the task is done?</b></h2><br>
+        <input type="submit" class="btn btn-primary mb-3" value="DELETE">
+    </div>
+  </div>
+
+</form>
+{% endblock %}

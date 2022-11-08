@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="banner">
+                <div class="banner-text"><br>
+                    <h1  style="text-align: center; font-family: Perpetua; color: #191970;"><u>TODO LIST</u></h1><br>
+                    <h2 style="text-align: center; font-family: Cursive; color: #191970;">Your future is created by what you do..</h2>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <form class="row g-3" method="POST">
+        {% csrf_token %}
+
+
+<!--      <div class="card">-->
+        <div class="col-auto">
+            <input type="text" class="form-control" name="task" placeholder="enter the task"><br>
+            <input type="text" class="form-control" name="priority" placeholder="enter the priority"><br>
+            <input type="date" class="form-control" name="date" placeholder="enter the date">
+        </div>
+        <div class="col-auto">
+          <br><br><button type="submit" class="btn btn-primary mb-3">ADD</button>
+<!--        </div>-->
+      </div>
+
+</form>
+      </div>
+
+    <div class="col-md-6">
+      {% for i in t %}
+      <div class="card" style="height:120px; margin: 20px;">
+          <div class="card-body">
+              <b>{{i.name}} -
+&emsp;            {{i.priority}}<br>
+              {{i.date}}</b><br>
+              <a class="btn btn-danger mb-3" href="{% url 'todoapp:donetask' i.id %}">DONE</a>
+              <a class="btn btn-success mb-3" href="{% url 'todoapp:edittask' i.id %}">UPDATE</a>
+          </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block content %}
+<form method="POST" style="text-align: right;">
+  {% csrf_token %}
+    <h4 style="font-family: Perpetua; text-align: right;">{{form.as_p}}</h4>
+    <input type="Submit" value="UPDATE">
+</form>
+{% endblock %}
+
